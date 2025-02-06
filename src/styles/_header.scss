@@ -1,0 +1,238 @@
+@use "variaveis";
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px 0 48px;
+    height: 72px;
+    position: sticky;
+    top: 0;
+    left: 0;
+    transition: .5s;
+    // position: relative;
+
+
+    @media (max-width: 992px) {
+        padding: 0 1rem;
+    }
+
+    &__options {
+        display: flex;
+        align-items: center;
+        height: 100%;
+
+        &__logo {
+            margin-right: 60px;
+
+            @media (max-width: 992px) {
+                margin-right: 56px;
+            }
+        }
+
+        &__nav {
+            .header__nav__list {
+                display: flex;
+                align-items: center;
+                list-style-type: none;
+                gap: 36px;
+                margin: 0;
+                padding: 0;
+
+                li {
+                    font-weight: bold;
+                    text-transform: uppercase;
+
+                    @media (max-width: 1439px) {
+
+                        .nav__link__text {
+                            display: none;
+                        }
+                    }
+
+                    .nav__link {
+                        display: flex;
+                        align-items: center;
+                        text-decoration: none;
+                        color: variaveis.$corText;
+
+                        .nav_icon {
+                            font-size: 17px;
+                            color: #fff;
+                            margin-right: 8px;
+                        }
+
+                        .my-list {
+                            font-size: 34px;
+                        }
+
+                        &__text {
+                            position: relative;
+
+                            // border-bottom: 3px solid transparent;
+                            &::after {
+                                content: " ";
+                                background-color: #fff;
+                                position: absolute;
+                                height: 3px;
+                                width: 0%;
+                                bottom: -4px;
+                                left: 0;
+                                transition: .3s;
+                            }
+
+                            &:hover {
+                                &::after {
+                                    width: 100%;
+                                }
+                            }
+
+                            @media (max-width: 768px) {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+
+                .item--display-none {
+                    @media (max-width: 768px) {
+                        display: none;
+                    }
+                }
+
+                &__options {
+                    display: none;
+                    font-size: 17px;
+                    color: variaveis.$corText;
+                    margin-right: 8px;
+                    list-style: none;
+                    padding: 0;
+
+                    @media (max-width: 768px) {
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+
+    &__profile {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        cursor: pointer;
+
+        &__name {
+            color: variaveis.$corText;
+            margin: 0;
+            font-weight: 505;
+
+            @media (max-width: 992px) {
+                display: none;
+            }
+        }
+
+        &__image {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            z-index: 1;
+
+            @media (max-width: 992px) {
+                width: 36px;
+                height: 36px;
+            }
+        }
+    }
+
+    @keyframes showOptionsProfile {
+        from {
+            height: 0px;
+        }
+        to {
+            height: 400px;
+        }
+    }
+
+    &__profile__options {
+        display: none;
+        height: 0px;
+        background-color: #111115;
+        width: 240px;
+        position: absolute;
+        right: 0;
+        padding: 0 20px;
+        border: 1px solid #71717179;
+        border-bottom-left-radius: 5px;
+        overflow: hidden;
+        animation: showOptionsProfile .3s linear;
+
+        &:hover {
+            display: block;
+            height: 400px;
+        }
+
+        &__name {
+            display: flex;
+            height: 72px;
+            border-bottom: 1px solid #6161615a;
+            align-items: center;
+            justify-content: right;
+            padding-right: 63px;
+            color: variaveis.$corText;
+            font-weight: bold;
+        }
+
+        &__list {
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            margin: 0;
+            list-style-type: none;
+            padding: 30px 0;
+            row-gap: 20px;
+            
+            .profile__list__item {
+                display: flex;
+                column-gap: 20px;
+                align-items: center;
+                cursor: pointer;
+                color: variaveis.$colorTextUnfocus;
+
+                &:hover {
+                    color: lighten(variaveis.$colorTextUnfocus, 20%);
+                }
+
+                &__button {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 48px;
+                    height: 48px;
+                    border: none;
+                    outline: none;
+                    border-radius: 100%;
+                    padding: 0;
+                    background-color: #2f2c2f;
+                    color: variaveis.$corText;
+
+                    &:hover {
+                        background-color: lighten(variaveis.$buttonTowBgColor, 5%);
+                    }
+
+                    .item__button__icon {
+                        font-size: 22px;
+                    }
+                }
+            }
+        }
+    }
+
+    &__profile:hover ~ &__profile__options {
+        display: block;
+        height: 400px;
+    }
+
+    &--is-active {
+        background-color: variaveis.$corDoFooter;
+    }
+}

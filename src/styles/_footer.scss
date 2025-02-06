@@ -1,0 +1,45 @@
+@use "variaveis";
+
+.footer {
+    display: flex;
+    justify-content: center;
+    padding: 19px 0 16px;
+    background-color: variaveis.$corDoFooter;
+
+    &__elements {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 500px;
+
+        &__logo {
+            width: 86px;
+        }
+
+        &__list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            column-gap: 16px;
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+
+            &__item {
+                padding: 12px 0;
+                color: variaveis.$colorLinksFooter;
+            }
+        }
+
+        &__description {
+            text-align: center;
+            margin: 8px 16px 0;
+            color: variaveis.$colorTextUnfocus;
+        }
+
+        &__copyright {
+            color: variaveis.$colorTextUnfocus;
+            margin-top: 8px;
+        }
+    }
+}
